@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RetrofitEncyclopedia</string>
+    <string name="buttonCharacters">Lista postaci</string>
+    <string name="searchLabel">Wpisz imię szukanej postaci</string>
+    <string name="characterName">Imię i nazwisko:</string>
+    <string name="characterStatus">Status:</string>
+    <string name="characterGender">Płeć:</string>
+    <string name="characterSpecies">Gatunek:</string>
+    <string name="characterOrigin">Pochodzenie:</string>
+    <string name="title">Encyklopedia postaci</string>
+    <string name="searchLabel2">Wyszukaj listę postaci</string>
+    <string name="searchLabel3">Wpisz Id szukanej postaci</string>
+    <string name="characterTitle">Karta postaci</string>
+    <string name="goBack">Wstecz</string>
+    <string name="searchTitle">Wyszukaj postać</string>
+    <string name="searchLabel4">Wpisz status szukanych postaci</string>
+    <string name="labelList">Lista postaci</string>
+</resources>

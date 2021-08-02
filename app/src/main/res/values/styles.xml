@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="textStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Display1</item>
+        <item name="android:textColor">@color/greener</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="textLabelStyle">
+        <item name="android:textColor">@color/greener</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="textDataStyle">
+        <item name="android:textColor">@color/greener</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+</resources>
