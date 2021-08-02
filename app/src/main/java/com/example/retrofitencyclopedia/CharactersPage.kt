@@ -1,6 +1,8 @@
 package com.example.retrofitencyclopedia
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -15,12 +17,21 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Inject
 
 
 class CharactersPage : AppCompatActivity() {
+    private lateinit var retrofit: Retrofit
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters_page)
+
+        val goToMenu = findViewById<Button>(R.id.buttonGoToMenu)
+        goToMenu.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val BASE_URL = "https://rickandmortyapi.com/api/"
         val httpClient = OkHttpClient()
@@ -32,7 +43,12 @@ class CharactersPage : AppCompatActivity() {
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
         val service: CharacterServices = retrofit.create(CharacterServices::class.java)
-
+/*
+       @Inject
+        fun CharactersPage(retrofit: Retrofit) {
+            this.retrofit = retrofit;
+            val service: CharacterServices = retrofit.create(CharacterServices::class.java)
+        }*/
 
         val wantedId = intent.getStringExtra("characterId")
         val wantedCharacter = intent.getStringExtra("characterName")
@@ -80,8 +96,8 @@ class CharactersPage : AppCompatActivity() {
 
 
         //Wyszukaj poprzez imię i nazwisko
-        if(!wantedCharacter.isNullOrEmpty()) {
-            service.getCharacterByName(wantedCharacter).enqueue(object : Callback<Character> {
+        /*if(!wantedCharacter.isNullOrEmpty()) {
+            service.getCharacterByName("Rick Sanchez").enqueue(object : Callback<Character> {
                 override fun onResponse(call: Call<Character>, response: Response<Character>) {
                     if (!response.isSuccessful) {
                         Toast.makeText(this@CharactersPage, "Błąd połączenia", Toast.LENGTH_LONG).show()
@@ -118,7 +134,7 @@ class CharactersPage : AppCompatActivity() {
 
 
             })
-        }
+        } */
 
 
     }
