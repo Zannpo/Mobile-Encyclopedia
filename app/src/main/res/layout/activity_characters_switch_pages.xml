@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CharactersSwitchPages">
+
+    <TextView
+        android:id="@+id/textViewCharacterTitle3"
+        style="@style/textStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="280dp"
+        android:text="@string/characterTitle"
+        app:layout_constraintBottom_toTopOf="@+id/textViewResultName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonGoBackToMenu2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewSwitchPagesAvatar"
+        android:layout_width="211dp"
+        android:layout_height="201dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="104dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/buttonPrevious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="59dp"
+        android:background="@drawable/button_shape"
+        android:text="@string/previous"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResultGender" />
+
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="63dp"
+        android:background="@drawable/button_shape"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonPrevious" />
+
+    <TextView
+        android:id="@+id/textViewPagesName"
+        style="@style/textLabelStyle"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/characterName"
+        app:layout_constraintBottom_toTopOf="@+id/textViewPagesStatus"
+        app:layout_constraintEnd_toStartOf="@+id/textViewResultName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSwitchPagesAvatar" />
+
+    <TextView
+        android:id="@+id/textViewPagesStatus"
+        style="@style/textLabelStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="22dp"
+        android:text="@string/characterStatus"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewResultStatus"
+        app:layout_constraintEnd_toStartOf="@+id/textViewResultStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewResultStatus" />
+
+    <TextView
+        android:id="@+id/textViewPagesGender"
+        style="@style/textLabelStyle"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="13dp"
+        android:text="@string/characterGender"
+        app:layout_constraintEnd_toStartOf="@+id/textViewResultGender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewResultGender" />
+
+    <TextView
+        android:id="@+id/textViewPagesSpecies"
+        style="@style/textLabelStyle"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="18dp"
+        android:text="@string/characterSpecies"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewResultSpecies"
+        app:layout_constraintEnd_toStartOf="@+id/textViewResultSpecies"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewResultName"
+        style="@style/textDataStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="17dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewResultStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPagesName"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCharacterTitle3" />
+
+    <TextView
+        android:id="@+id/textViewResultStatus"
+        style="@style/textDataStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/textViewResultSpecies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPagesStatus"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResultName" />
+
+    <TextView
+        android:id="@+id/textViewResultGender"
+        style="@style/textDataStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="88dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPrevious"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPagesGender"
+        app:layout_constraintTop_toBottomOf="@+id/textViewResultSpecies" />
+
+    <TextView
+        android:id="@+id/textViewResultSpecies"
+        style="@style/textDataStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="250dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPagesSpecies"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGoBackToMenu2" />
+
+    <Button
+        android:id="@+id/buttonGoBackToMenu2"
+        android:layout_width="61dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="407dp"
+        android:background="@drawable/button_shape"
+        android:text="X"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewResultSpecies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewCharacterTitle3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPagesId"
+        style="@style/textLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="7dp"
+        android:text="@string/textViewId"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewResultId"
+        app:layout_constraintEnd_toStartOf="@+id/textViewResultId"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewResultId"
+        style="@style/textDataStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewSwitchPagesAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPagesId" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

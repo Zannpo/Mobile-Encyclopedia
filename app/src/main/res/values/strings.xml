@@ -15,4 +15,8 @@
     <string name="searchTitle">Wyszukaj postać</string>
     <string name="searchLabel4">Wpisz status szukanych postaci</string>
     <string name="labelList">Lista postaci</string>
+    <string name="labelCharacterCard">Wyszukaj postać</string>
+    <string name="previous">Poprzedni</string>
+    <string name="next">Następny</string>
+    <string name="textViewId">Id:</string>
 </resources>

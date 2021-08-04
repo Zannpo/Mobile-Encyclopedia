@@ -1,17 +1,22 @@
 package com.example.retrofitencyclopedia.Adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.example.retrofitencyclopedia.Model.Character
 import com.example.retrofitencyclopedia.R
 
-class ListOfCharactersAdapter( private val allCharacters: List<Character>) : RecyclerView.Adapter<ListOfCharactersAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ListOfCharactersAdapter(private var allCharacters:List<Character?>) : RecyclerView.Adapter<ListOfCharactersAdapter.ViewHolder>() {
+    //private var allCharacters: List<Character>
+    //private var allCharacters = emptyList<Character>()
+
+
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val characterName = view.findViewById<TextView>(R.id.listCharacterName)
         val characterAvatar = view.findViewById<ImageView>(R.id.listCharacterAvatar)
@@ -22,7 +27,8 @@ class ListOfCharactersAdapter( private val allCharacters: List<Character>) : Rec
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_item_list, parent, false)
+        val view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.view_item_list, parent, false);
 
 
         return ViewHolder(view)
@@ -33,11 +39,18 @@ class ListOfCharactersAdapter( private val allCharacters: List<Character>) : Rec
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-
+        holder.characterName.text = allCharacters[position]?.name.toString()
+        holder.characterStatus.text = allCharacters[position]?.status.toString()
+        holder.characterSpecies.text = allCharacters[position]?.species.toString()
+        holder.characterGender.text = allCharacters[position]?.gender.toString()
 
 
 
     }
 
-
+/*
+    fun setData(newList: List<Character>){
+        allCharacters = newList
+        notifyDataSetChanged()
+    }*/
 }

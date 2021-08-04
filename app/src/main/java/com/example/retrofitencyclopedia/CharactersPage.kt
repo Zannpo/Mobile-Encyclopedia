@@ -1,6 +1,8 @@
 package com.example.retrofitencyclopedia
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -18,9 +20,24 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 class CharactersPage : AppCompatActivity() {
+    private lateinit var retrofit: Retrofit
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters_page)
+
+        val goToMenu = findViewById<Button>(R.id.buttonGoToMenu1)
+        val goBack = findViewById<Button>(R.id.buttonGoOnePageBack)
+
+        goToMenu.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        goBack.setOnClickListener {
+            val intent = Intent(this, SearchScreen::class.java)
+            startActivity(intent)
+        }
 
         val BASE_URL = "https://rickandmortyapi.com/api/"
         val httpClient = OkHttpClient()
@@ -32,11 +49,15 @@ class CharactersPage : AppCompatActivity() {
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
         val service: CharacterServices = retrofit.create(CharacterServices::class.java)
-
+/*
+       @Inject
+        fun CharactersPage(retrofit: Retrofit) {
+            this.retrofit = retrofit;
+            val service: CharacterServices = retrofit.create(CharacterServices::class.java)
+        }*/
 
         val wantedId = intent.getStringExtra("characterId")
         val wantedCharacter = intent.getStringExtra("characterName")
-        Toast.makeText(this@CharactersPage, wantedCharacter.toString(), Toast.LENGTH_LONG).show()
 
         if(!wantedId.isNullOrEmpty()) {
             service.getCharacterById(Integer.parseInt(wantedId)).enqueue(object : Callback<Character> {
@@ -80,8 +101,8 @@ class CharactersPage : AppCompatActivity() {
 
 
         //Wyszukaj poprzez imię i nazwisko
-        if(!wantedCharacter.isNullOrEmpty()) {
-            service.getCharacterByName(wantedCharacter).enqueue(object : Callback<Character> {
+        /*if(!wantedCharacter.isNullOrEmpty()) {
+            service.getCharacterByName("Rick Sanchez").enqueue(object : Callback<Character> {
                 override fun onResponse(call: Call<Character>, response: Response<Character>) {
                     if (!response.isSuccessful) {
                         Toast.makeText(this@CharactersPage, "Błąd połączenia", Toast.LENGTH_LONG).show()
@@ -118,7 +139,7 @@ class CharactersPage : AppCompatActivity() {
 
 
             })
-        }
+        } */
 
 
     }

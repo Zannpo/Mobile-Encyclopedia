@@ -136,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelSpecies" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonGoOnePageBack"
         android:layout_width="112dp"
         android:layout_height="43dp"
         android:layout_marginStart="40dp"
@@ -145,6 +145,18 @@
         android:text="@string/goBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonGoToMenu1"
+        android:layout_width="61dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/button_shape"
+        android:text="X"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

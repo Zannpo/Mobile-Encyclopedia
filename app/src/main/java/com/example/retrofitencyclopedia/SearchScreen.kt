@@ -55,7 +55,14 @@ class SearchScreen : AppCompatActivity() {
                 startActivity(intent)
             }
 
+            if(searchName.text.isNotBlank())
+            {
+                var wantedCharacter = searchName.text
+                intent.putExtra("characterName",wantedCharacter.toString())
+                startActivity(intent)
+            }
 
+            startActivity(intent)
 
         }
 
