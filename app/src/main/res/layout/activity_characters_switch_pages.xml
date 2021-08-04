@@ -176,5 +176,29 @@
         app:layout_constraintStart_toEndOf="@+id/textViewCharacterTitle3"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textViewPagesId"
+        style="@style/textLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="7dp"
+        android:text="@string/textViewId"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textViewResultId"
+        app:layout_constraintEnd_toStartOf="@+id/textViewResultId"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewResultId"
+        style="@style/textDataStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewSwitchPagesAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPagesId" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

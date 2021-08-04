@@ -18,4 +18,5 @@
     <string name="labelCharacterCard">Wyszukaj postać</string>
     <string name="previous">Poprzedni</string>
     <string name="next">Następny</string>
+    <string name="textViewId">Id:</string>
 </resources>

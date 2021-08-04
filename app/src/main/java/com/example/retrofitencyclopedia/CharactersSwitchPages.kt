@@ -35,6 +35,7 @@ class CharactersSwitchPages : AppCompatActivity() {
         val characterSpecies = findViewById<TextView>(R.id.textViewResultSpecies)
         val characterGender = findViewById<TextView>(R.id.textViewResultGender)
         val characterAvatar = findViewById<ImageView>(R.id.imageViewSwitchPagesAvatar)
+        val characterId = findViewById<TextView>(R.id.textViewResultId)
 
         val BASE_URL = "https://rickandmortyapi.com/api/"
         val httpClient = OkHttpClient()
@@ -65,6 +66,7 @@ class CharactersSwitchPages : AppCompatActivity() {
                     val gender = foundCharacter.gender
                     val avatar = foundCharacter.image
                     val species = foundCharacter.species
+                    val id = foundCharacter.id
 
 
 
@@ -73,6 +75,7 @@ class CharactersSwitchPages : AppCompatActivity() {
                     characterStatus.text = status
                     characterSpecies.text = species
                     characterGender.text = gender
+                    characterId.text = id.toString()
                     Picasso.with(this@CharactersSwitchPages).load(avatar).into(characterAvatar);
 
                 }
@@ -114,6 +117,7 @@ class CharactersSwitchPages : AppCompatActivity() {
                     characterStatus.text = status
                     characterSpecies.text = species
                     characterGender.text = gender
+                    characterId.text = wantedId.toString()
                     Picasso.with(this@CharactersSwitchPages).load(avatar).into(characterAvatar);
 
                 }
@@ -159,6 +163,7 @@ class CharactersSwitchPages : AppCompatActivity() {
                     characterStatus.text = status
                     characterSpecies.text = species
                     characterGender.text = gender
+                    characterId.text = wantedId.toString()
                     Picasso.with(this@CharactersSwitchPages).load(avatar).into(characterAvatar);
 
                 }

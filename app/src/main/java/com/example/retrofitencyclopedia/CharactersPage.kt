@@ -17,7 +17,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.converter.moshi.MoshiConverterFactory
-import javax.inject.Inject
 
 
 class CharactersPage : AppCompatActivity() {
@@ -27,9 +26,16 @@ class CharactersPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters_page)
 
-        val goToMenu = findViewById<Button>(R.id.buttonGoToMenu)
+        val goToMenu = findViewById<Button>(R.id.buttonGoToMenu1)
+        val goBack = findViewById<Button>(R.id.buttonGoOnePageBack)
+
         goToMenu.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        goBack.setOnClickListener {
+            val intent = Intent(this, SearchScreen::class.java)
             startActivity(intent)
         }
 
@@ -52,7 +58,6 @@ class CharactersPage : AppCompatActivity() {
 
         val wantedId = intent.getStringExtra("characterId")
         val wantedCharacter = intent.getStringExtra("characterName")
-        Toast.makeText(this@CharactersPage, wantedCharacter.toString(), Toast.LENGTH_LONG).show()
 
         if(!wantedId.isNullOrEmpty()) {
             service.getCharacterById(Integer.parseInt(wantedId)).enqueue(object : Callback<Character> {
