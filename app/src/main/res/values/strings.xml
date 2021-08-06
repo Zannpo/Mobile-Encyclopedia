@@ -20,4 +20,6 @@
     <string name="previous">Poprzedni</string>
     <string name="next">Następny</string>
     <string name="textViewId">Id:</string>
+    <string name="buttonInfo">Informacje</string>
+    <string name="Information">Baza postaci występujących w Rick and Morty. Całość zawiera 671 postaci.</string>
 </resources>

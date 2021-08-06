@@ -16,7 +16,7 @@ class SearchScreen : AppCompatActivity() {
         val goToCharacterCardPage = findViewById<Button>(R.id.buttonSearch)
         val goToCharactersList = findViewById<Button>(R.id.buttonSearchList)
         val number = findViewById<EditText>(R.id.editTextIdNumber)
-        val searchStatus = findViewById<EditText>(R.id.editTextTextPersonStatus)
+
         val searchName = findViewById<EditText>(R.id.editTextTextPersonName)
 
         Toast.makeText(this@SearchScreen, "Wypełnił tylko jedno pole!", Toast.LENGTH_LONG).show()
@@ -47,13 +47,7 @@ class SearchScreen : AppCompatActivity() {
         goToCharactersList.setOnClickListener {
             val intent = Intent(this, ListOfCharacters::class.java)
 
-            //Wyszukaj według statusu
-            if(searchStatus.text.isNotBlank())
-            {
-                var wantedStatus = searchStatus.text
-                intent.putExtra("characterName",wantedStatus)
-                startActivity(intent)
-            }
+
 
             if(searchName.text.isNotBlank())
             {
