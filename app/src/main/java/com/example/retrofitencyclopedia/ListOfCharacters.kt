@@ -34,7 +34,7 @@ class ListOfCharacters : AppCompatActivity() {
         }
 
         var listView = findViewById<RecyclerView>(R.id.RecyclerViewList)
-        var service = Retrofit().createCharacterService().getAllCharacters()
+        var service = Retrofit().createCharacterService().getCharactersByName("rick")
         service.enqueue(object: Callback<Characters> {
 
 
