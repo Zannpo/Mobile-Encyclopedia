@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         goToListView.setOnClickListener {
             val intent = Intent(this, ListOfCharacters::class.java)
+
+            var mode = "fullList"
+            intent.putExtra("Mode",mode.toString())
             startActivity(intent)
         }
     }

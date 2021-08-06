@@ -34,39 +34,91 @@ class ListOfCharacters : AppCompatActivity() {
         }
 
         var listView = findViewById<RecyclerView>(R.id.RecyclerViewList)
-        var service = Retrofit().createCharacterService().getCharactersByName("rick")
-        service.enqueue(object: Callback<Characters> {
+
+        val wantedCharacter = intent.getStringExtra("characterName")
+        val wantedMode = intent.getStringExtra("Mode")
+        val wantedGender = intent.getStringExtra("characterGender")
+        val wantedStatus = intent.getStringExtra("characterStatus")
+
+        if (wantedCharacter.isNullOrEmpty()) {
+
+            if (!wantedMode.isNullOrEmpty()) {
+                //Wyświetl liste wszystkich postaci
+                var service = Retrofit().createCharacterService().getAllCharacters()
+                service.enqueue(object : Callback<Characters> {
 
 
-            override fun onFailure(call: Call<Characters>, t: Throwable) {
-                Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
-            }
-
-            override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
-                if (!response.isSuccessful) {
-                    Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
-                        .show()
-                }
-
-                val list = response.body()
-
-                list?.let {
-                    listView.apply {
-                        layoutManager = LinearLayoutManager(this@ListOfCharacters)
-
-                        adapter = ListOfCharactersAdapter(list)
-
+                    override fun onFailure(call: Call<Characters>, t: Throwable) {
+                        Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
                     }
-                }
+
+                    override fun onResponse(
+                        call: Call<Characters>,
+                        response: Response<Characters>
+                    ) {
+                        if (!response.isSuccessful) {
+                            Toast.makeText(
+                                this@ListOfCharacters,
+                                "Błąd połączenia",
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                        }
+
+                        val list = response.body()
+
+                        list?.let {
+                            listView.apply {
+                                layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                adapter = ListOfCharactersAdapter(list)
+
+                            }
+                        }
 
 
-                return
+                        return
+                    }
+
+                })
             }
 
-        })
+
+        }
+        else
+        {
+            //Wyświetl liste postaci według imienia
+            var service = Retrofit().createCharacterService().getCharactersByName(wantedCharacter)
+            service.enqueue(object : Callback<Characters> {
 
 
+                override fun onFailure(call: Call<Characters>, t: Throwable) {
+                    Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
+                }
+
+                override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                    if (!response.isSuccessful) {
+                        Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                            .show()
+                    }
+
+                    val list = response.body()
+
+                    list?.let {
+                        listView.apply {
+                            layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                            adapter = ListOfCharactersAdapter(list)
+
+                        }
+                    }
+
+
+                    return
+                }
+
+            })
+        }
     }
-
-
 }
+

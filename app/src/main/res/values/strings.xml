@@ -22,4 +22,10 @@
     <string name="textViewId">Id:</string>
     <string name="buttonInfo">Informacje</string>
     <string name="Information">Baza postaci występujących w Rick and Morty. Całość zawiera 671 postaci.</string>
+    <string name="radioAlive">Żywy</string>
+    <string name="radioDead">Martwy</string>
+    <string name="radioFemale">Kobieta</string>
+    <string name="radioMale">Mężczyzna</string>
+    <string name="radioStatus">Wybierz status postaci</string>
+    <string name="radioGender">Wybierz płeć postaci</string>
 </resources>

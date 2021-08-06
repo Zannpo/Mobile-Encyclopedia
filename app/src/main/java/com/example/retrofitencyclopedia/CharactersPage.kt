@@ -39,7 +39,7 @@ class CharactersPage : AppCompatActivity() {
 
 
         val wantedId = intent.getStringExtra("characterId")
-        val wantedCharacter = intent.getStringExtra("characterName")
+
 
         if(!wantedId.isNullOrEmpty()) {
             var service = Retrofit().createCharacterService().getCharacterById(Integer.parseInt(wantedId))
@@ -81,48 +81,6 @@ class CharactersPage : AppCompatActivity() {
 
             })
         }
-
-
-        //Wyszukaj poprzez imię i nazwisko
-        /*if(!wantedCharacter.isNullOrEmpty()) {
-            service.getCharacterByName("Rick Sanchez").enqueue(object : Callback<Character> {
-                override fun onResponse(call: Call<Character>, response: Response<Character>) {
-                    if (!response.isSuccessful) {
-                        Toast.makeText(this@CharactersPage, "Błąd połączenia", Toast.LENGTH_LONG).show()
-                        return
-                    }
-
-                    val foundCharacter = response.body()!!
-                    val name = foundCharacter.name
-                    val status = foundCharacter.status
-                    val gender = foundCharacter.gender
-                    val avatar = foundCharacter.image
-                    val species = foundCharacter.species
-
-                    val characterName = findViewById<TextView>(R.id.textViewName)
-                    val characterStatus = findViewById<TextView>(R.id.textViewStatus)
-                    val characterSpecies = findViewById<TextView>(R.id.textViewSpecies)
-                    val characterGender = findViewById<TextView>(R.id.textViewGender)
-                    val characterAvatar = findViewById<ImageView>(R.id.imageViewAvatar)
-
-                    //Ustawienie danych
-                    characterName.text = name
-                    characterStatus.text = status
-                    characterSpecies.text = species
-                    characterGender.text = gender
-                    Picasso.with(this@CharactersPage).load(avatar).into(characterAvatar);
-
-                }
-
-                override fun onFailure(call: Call<Character>, t: Throwable) {
-
-                    Toast.makeText(this@CharactersPage, t.message, Toast.LENGTH_LONG).show()
-
-                }
-
-
-            })
-        } */
 
 
     }

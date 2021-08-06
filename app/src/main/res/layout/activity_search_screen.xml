@@ -11,23 +11,25 @@
         style="@style/textLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="17dp"
         android:text="@string/searchLabel"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="18dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSearchList"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRadioStatus"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLabel"
+        app:layout_constraintStart_toStartOf="@+id/textViewLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewLabel" />
 
     <TextView
@@ -35,43 +37,46 @@
         style="@style/textLabelStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="12dp"
         android:text="@string/searchLabel3"
         app:layout_constraintBottom_toTopOf="@+id/editTextIdNumber"
         app:layout_constraintEnd_toEndOf="@+id/editTextIdNumber"
         app:layout_constraintTop_toBottomOf="@+id/buttonSearchList" />
 
-    <EditText
-        android:id="@+id/editTextIdNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="46dp"
-        android:layout_marginBottom="42dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSearch"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <Button
         android:id="@+id/buttonSearch"
         android:layout_width="235dp"
         android:layout_height="0dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="43dp"
         android:background="@drawable/button_shape"
         android:text="@string/searchTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextIdNumber" />
 
+    <EditText
+        android:id="@+id/editTextIdNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="11dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSearch"
+        app:layout_constraintStart_toStartOf="@+id/buttonSearch"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
     <TextView
         android:id="@+id/textView3"
-        style="@style/textStyle"
-        android:layout_width="213dp"
+        android:layout_width="198dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="11dp"
         android:text="@string/searchTitle"
+        android:textColor="@color/darker_green"
+        android:textSize="28sp"
+
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textViewLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,11 +86,82 @@
         android:id="@+id/buttonSearchList"
         android:layout_width="239dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="97dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_shape"
         android:text="@string/searchLabel2"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/radioGroupGender"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupGender" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupStatus"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRadioGender"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroupGender"
+        app:layout_constraintStart_toStartOf="@+id/textViewRadioGender"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRadioStatus">
+
+        <RadioButton
+            android:id="@+id/radioButtonAlive"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/radioAlive" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radioDead" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewRadioStatus"
+        style="@style/textLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/radioStatus"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroupStatus"
+        app:layout_constraintStart_toStartOf="@+id/radioGroupStatus"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupGender"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSearchList"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="@+id/textViewRadioGender"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRadioGender">
+
+        <RadioButton
+            android:id="@+id/radioButtonFemale"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:text="@string/radioFemale" />
+
+        <RadioButton
+            android:id="@+id/radioButtonMale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/radioMale" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewRadioGender"
+        style="@style/textLabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="39dp"
+        android:layout_marginBottom="17dp"
+        android:text="@string/radioGender"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroupGender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupStatus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
