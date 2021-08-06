@@ -20,8 +20,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 class CharactersPage : AppCompatActivity() {
-    private lateinit var retrofit: Retrofit
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_characters_page)
@@ -39,28 +37,13 @@ class CharactersPage : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val BASE_URL = "https://rickandmortyapi.com/api/"
-        val httpClient = OkHttpClient()
-
-        val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-        val retrofit: retrofit2.Retrofit = retrofit2.Retrofit.Builder()
-                .client(httpClient)
-                .baseUrl(BASE_URL)
-                .addConverterFactory(MoshiConverterFactory.create(moshi))
-                .build()
-        val service: CharacterServices = retrofit.create(CharacterServices::class.java)
-/*
-       @Inject
-        fun CharactersPage(retrofit: Retrofit) {
-            this.retrofit = retrofit;
-            val service: CharacterServices = retrofit.create(CharacterServices::class.java)
-        }*/
 
         val wantedId = intent.getStringExtra("characterId")
         val wantedCharacter = intent.getStringExtra("characterName")
 
         if(!wantedId.isNullOrEmpty()) {
-            service.getCharacterById(Integer.parseInt(wantedId)).enqueue(object : Callback<Character> {
+            var service = Retrofit().createCharacterService().getCharacterById(Integer.parseInt(wantedId))
+            service.enqueue(object : Callback<Character> {
                 override fun onResponse(call: Call<Character>, response: Response<Character>) {
                     if (!response.isSuccessful) {
                         Toast.makeText(this@CharactersPage, "Błąd połączenia", Toast.LENGTH_LONG).show()

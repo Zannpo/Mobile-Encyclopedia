@@ -15,27 +15,11 @@ public interface CharacterServices {
     @GET("/character/?name={name}")
     fun getCharacterByName(@Path("name") name: String): Call<List<com.example.retrofitencyclopedia.Model.Character>>
 
-    @GET("/character/?")
-    fun getAliveCharactersByName2(@Query("name") name: String): Call<com.example.retrofitencyclopedia.Model.Character>
 
     @GET("/character/?")
     fun getAliveCharactersByName(@Query(value = "name", encoded = true) name: String?):Call<com.example.retrofitencyclopedia.Model.Character>
 
+    @GET("character/")
+    fun getAllCharacters():Call<com.example.retrofitencyclopedia.Model.Characters>
 
-    @GET("character/?{status}")
-    suspend fun getStatus(
-            @Query("status") status: String,
-    ): Response<List<Character>>
-
-
-    /*
-     @GET("/character/?name={name}")
-    fun getCharacterByName(@Path("name") name: String): Call<com.example.retrofitencyclopedia.Model.Character>
-
-     */
-    @GET("/character/?name=rick")
-    fun getRickByName(): Call<List<com.example.retrofitencyclopedia.Model.Character>>
-
-    @GET("character/?status={status}")
-    fun getAListOfCharactersByStatus(@Query("status") status: String?): Call<List<com.example.retrofitencyclopedia.Model.Character?>?>?
 }

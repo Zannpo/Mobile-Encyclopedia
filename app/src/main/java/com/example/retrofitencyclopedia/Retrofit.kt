@@ -7,8 +7,7 @@ import dagger.Component
 import okhttp3.OkHttpClient
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-@Component
-object Retrofit {
+class Retrofit {
     val BASE_URL = "https://rickandmortyapi.com/api/"
     val httpClient = OkHttpClient()
 
@@ -19,9 +18,8 @@ object Retrofit {
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 
-    //val service: CharacterServices = retrofit.create(CharacterServices::class.java)
 
-    val api: CharacterServices by lazy {
-        retrofit.create(CharacterServices::class.java)
-    }
+    fun createCharacterService() = retrofit.create(CharacterServices::class.java)!!
+
+
 }

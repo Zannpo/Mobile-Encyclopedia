@@ -8,21 +8,26 @@ import android.widget.TextView
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitencyclopedia.Model.Character
+import com.example.retrofitencyclopedia.Model.Characters
 import com.example.retrofitencyclopedia.R
 
-class ListOfCharactersAdapter(private var allCharacters:List<Character?>) : RecyclerView.Adapter<ListOfCharactersAdapter.ViewHolder>() {
-    //private var allCharacters: List<Character>
-    //private var allCharacters = emptyList<Character>()
-
+class ListOfCharactersAdapter(private val allCharacters: Characters): RecyclerView.Adapter<ListOfCharactersAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val characterName = view.findViewById<TextView>(R.id.listCharacterName)
-        val characterAvatar = view.findViewById<ImageView>(R.id.listCharacterAvatar)
-        val characterSpecies = view.findViewById<TextView>(R.id.listCharacterSpecies)
-        val characterGender = view.findViewById<TextView>(R.id.listCharacterGender)
-        val characterStatus = view.findViewById<TextView>(R.id.listCharacterStatus)
+        fun bindView(character: Character) {
+            val characterName = itemView.findViewById<TextView>(R.id.listCharacterName)
+            val characterAvatar = itemView.findViewById<ImageView>(R.id.listCharacterAvatar)
+            val characterSpecies = itemView.findViewById<TextView>(R.id.listCharacterSpecies)
+            val characterGender = itemView.findViewById<TextView>(R.id.listCharacterGender)
+            val characterStatus = itemView.findViewById<TextView>(R.id.listCharacterStatus)
+
+            characterName.text = character.name
+            characterSpecies.text = character.species
+            characterGender.text = character.gender
+            characterStatus.text = character.status
+        }
 
     }
 
@@ -34,23 +39,21 @@ class ListOfCharactersAdapter(private var allCharacters:List<Character?>) : Recy
         return ViewHolder(view)
     }
 
-    override fun getItemCount() = allCharacters.size
+    override fun getItemCount(): Int {
+        return allCharacters.results.size
+    }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.characterName.text = allCharacters[position]?.name.toString()
-        holder.characterStatus.text = allCharacters[position]?.status.toString()
-        holder.characterSpecies.text = allCharacters[position]?.species.toString()
-        holder.characterGender.text = allCharacters[position]?.gender.toString()
+        val character = allCharacters.results[position]
+        holder?.let {
+            it.bindView(character)
+        }
 
 
 
     }
 
-/*
-    fun setData(newList: List<Character>){
-        allCharacters = newList
-        notifyDataSetChanged()
-    }*/
+
 }
