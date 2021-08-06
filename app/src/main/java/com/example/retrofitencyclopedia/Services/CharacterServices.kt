@@ -27,5 +27,11 @@ public interface CharacterServices {
     fun getCharactersbyStatusAndGender(@Query("status") status : String,
                                        @Query("gender") gender : String):Call<com.example.retrofitencyclopedia.Model.Characters>
 
+    @GET("character")
+    fun getCharactersbySpecies(@Query("species") species : String):Call<com.example.retrofitencyclopedia.Model.Characters>
+
+    @GET("character")
+    fun getAliveSpecies(@Query("status") status : String,
+                                       @Query("species") species : String):Call<com.example.retrofitencyclopedia.Model.Characters>
 
 }
