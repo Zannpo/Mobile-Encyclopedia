@@ -80,7 +80,7 @@ class SearchScreen : AppCompatActivity() {
             }
             else if (radioMale.isChecked == true && radioDead.isChecked == true && !searchName.text.isNotBlank())
             {
-                var status = "alive"
+                var status = "dead"
                 var gender = "male"
                 intent.putExtra("characterStatus",status.toString())
                 intent.putExtra("characterGender",gender.toString())

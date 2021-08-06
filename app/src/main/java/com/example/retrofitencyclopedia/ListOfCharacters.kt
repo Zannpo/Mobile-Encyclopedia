@@ -82,6 +82,149 @@ class ListOfCharacters : AppCompatActivity() {
 
                 })
             }
+            else if (!wantedStatus.isNullOrEmpty() && !wantedGender.isNullOrEmpty())
+            {
+                if(wantedStatus.equals("Alive", ignoreCase = true))
+                {
+                    if(wantedGender.equals("Female", ignoreCase = true))
+                    {
+                        var service = Retrofit().createCharacterService().getCharactersbyStatusAndGender("Alive","Female")
+
+                        service.enqueue(object : Callback<Characters> {
+
+
+                            override fun onFailure(call: Call<Characters>, t: Throwable) {
+                                Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
+                            }
+
+                            override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                                if (!response.isSuccessful) {
+                                    Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                                            .show()
+                                }
+
+                                val list = response.body()
+
+                                list?.let {
+                                    listView.apply {
+                                        layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                        adapter = ListOfCharactersAdapter(list)
+
+                                    }
+                                }
+
+
+                                return
+                            }
+
+                        })
+                    }
+                    else
+                    {
+                        var service = Retrofit().createCharacterService().getCharactersbyStatusAndGender("Alive","Male")
+                        service.enqueue(object : Callback<Characters> {
+
+
+                            override fun onFailure(call: Call<Characters>, t: Throwable) {
+                                Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
+                            }
+
+                            override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                                if (!response.isSuccessful) {
+                                    Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                                            .show()
+                                }
+
+                                val list = response.body()
+
+                                list?.let {
+                                    listView.apply {
+                                        layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                        adapter = ListOfCharactersAdapter(list)
+
+                                    }
+                                }
+
+
+                                return
+                            }
+
+                        })
+                    }
+                }
+                else {
+                    if (wantedGender.equals("Female", ignoreCase = true))
+                    {
+                        var service = Retrofit().createCharacterService().getCharactersbyStatusAndGender("Dead","Female")
+                        service.enqueue(object : Callback<Characters> {
+
+
+                            override fun onFailure(call: Call<Characters>, t: Throwable) {
+                                Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
+                            }
+
+                            override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                                if (!response.isSuccessful) {
+                                    Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                                            .show()
+                                }
+
+                                val list = response.body()
+
+                                list?.let {
+                                    listView.apply {
+                                        layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                        adapter = ListOfCharactersAdapter(list)
+
+                                    }
+                                }
+
+
+                                return
+                            }
+
+                        })
+                    }
+                    else
+                    {
+                        var service = Retrofit().createCharacterService().getCharactersbyStatusAndGender("Dead","Male")
+                        service.enqueue(object : Callback<Characters> {
+
+
+                            override fun onFailure(call: Call<Characters>, t: Throwable) {
+                                Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
+                            }
+
+                            override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                                if (!response.isSuccessful) {
+                                    Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                                            .show()
+                                }
+
+                                val list = response.body()
+
+                                list?.let {
+                                    listView.apply {
+                                        layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                        adapter = ListOfCharactersAdapter(list)
+
+                                    }
+                                }
+
+
+                                return
+                            }
+
+                        })
+                    }
+                }
+
+
+            }
 
 
         }
