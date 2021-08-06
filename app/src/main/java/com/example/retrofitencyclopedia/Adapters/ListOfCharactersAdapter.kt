@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitencyclopedia.Model.Character
 import com.example.retrofitencyclopedia.Model.Characters
 import com.example.retrofitencyclopedia.R
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.withContext
+import java.security.AccessController.getContext
 
 class ListOfCharactersAdapter(private val allCharacters: Characters): RecyclerView.Adapter<ListOfCharactersAdapter.ViewHolder>() {
 
@@ -27,6 +30,8 @@ class ListOfCharactersAdapter(private val allCharacters: Characters): RecyclerVi
             characterSpecies.text = character.species
             characterGender.text = character.gender
             characterStatus.text = character.status
+            Picasso.with(itemView.context).load(character.image).into(characterAvatar);
+
         }
 
     }

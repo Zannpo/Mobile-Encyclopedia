@@ -1,6 +1,8 @@
 package com.example.retrofitencyclopedia
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +25,13 @@ class ListOfCharacters : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_of_characters)
+
+        val goBack = findViewById<Button>(R.id.buttonGoToMenu4)
+
+        goBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         var listView = findViewById<RecyclerView>(R.id.RecyclerViewList)
         var service = Retrofit().createCharacterService().getAllCharacters()

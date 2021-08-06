@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         val goToSearch = findViewById<Button>(R.id.buttonCharactersPage)
         val goToEncyclopedia = findViewById<Button>(R.id.buttonEncyclopedia)
 
-        val button = findViewById<Button>(R.id.buttonEncyclopedia)
+        val goToListView = findViewById<Button>(R.id.buttonListView)
 
         goToSearch.setOnClickListener {
             val intent = Intent(this, SearchScreen::class.java)
@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        goToListView.setOnClickListener {
+            val intent = Intent(this, ListOfCharacters::class.java)
+            startActivity(intent)
+        }
     }
 }
 

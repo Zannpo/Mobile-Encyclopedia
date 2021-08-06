@@ -9,20 +9,31 @@
     <TextView
         android:id="@+id/textViewListTitle"
         style="@style/textStyle"
-        android:layout_width="266dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="243dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="96dp"
         android:text="@string/labelList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerViewList"
-        android:layout_width="350dp"
-        android:layout_height="480dp"
+        android:layout_width="356dp"
+        android:layout_height="532dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewListTitle" />
+
+    <Button
+        android:id="@+id/buttonGoToMenu4"
+        android:layout_width="65dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_shape"
+        android:text="X"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

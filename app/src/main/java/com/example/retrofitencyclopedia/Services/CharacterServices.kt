@@ -15,9 +15,8 @@ public interface CharacterServices {
     @GET("/character/?name={name}")
     fun getCharacterByName(@Path("name") name: String): Call<List<com.example.retrofitencyclopedia.Model.Character>>
 
-
     @GET("/character/?")
-    fun getAliveCharactersByName(@Query(value = "name", encoded = true) name: String?):Call<com.example.retrofitencyclopedia.Model.Character>
+    fun getAliveCharactersByName(@Query(value = "name", encoded = true) name: String?):Call<com.example.retrofitencyclopedia.Model.Characters>
 
     @GET("character/")
     fun getAllCharacters():Call<com.example.retrofitencyclopedia.Model.Characters>
