@@ -87,37 +87,111 @@ class ListOfCharacters : AppCompatActivity() {
         }
         else
         {
-            //Wyświetl liste postaci według imienia
-            var service = Retrofit().createCharacterService().getCharactersByName(wantedCharacter)
-            service.enqueue(object : Callback<Characters> {
+            if (wantedStatus.isNullOrEmpty())
+            {
+                //Wyświetl liste postaci według imienia
+                var service = Retrofit().createCharacterService().getCharactersByName(wantedCharacter)
+                service.enqueue(object : Callback<Characters> {
 
 
-                override fun onFailure(call: Call<Characters>, t: Throwable) {
-                    Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
-                }
-
-                override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
-                    if (!response.isSuccessful) {
-                        Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
-                            .show()
+                    override fun onFailure(call: Call<Characters>, t: Throwable) {
+                        Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
                     }
 
-                    val list = response.body()
-
-                    list?.let {
-                        listView.apply {
-                            layoutManager = LinearLayoutManager(this@ListOfCharacters)
-
-                            adapter = ListOfCharactersAdapter(list)
-
+                    override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                        if (!response.isSuccessful) {
+                            Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                                    .show()
                         }
+
+                        val list = response.body()
+
+                        list?.let {
+                            listView.apply {
+                                layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                adapter = ListOfCharactersAdapter(list)
+
+                            }
+                        }
+
+
+                        return
                     }
 
+                })
+            }
+            else
+            {
+                if(wantedStatus.equals("Alive", ignoreCase = true))
+                {
+                    var service = Retrofit().createCharacterService().getCharactersByNameAndStatus(wantedCharacter,"Alive")
+                    service.enqueue(object : Callback<Characters> {
 
-                    return
+
+                        override fun onFailure(call: Call<Characters>, t: Throwable) {
+                            Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
+                        }
+
+                        override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                            if (!response.isSuccessful) {
+                                Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                                        .show()
+                            }
+
+                            val list = response.body()
+
+                            list?.let {
+                                listView.apply {
+                                    layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                    adapter = ListOfCharactersAdapter(list)
+
+                                }
+                            }
+
+
+                            return
+                        }
+
+                    })
+                }
+                else
+                {
+                    var service = Retrofit().createCharacterService().getCharactersByNameAndStatus(wantedCharacter,"Dead")
+                    service.enqueue(object : Callback<Characters> {
+
+
+                        override fun onFailure(call: Call<Characters>, t: Throwable) {
+                            Toast.makeText(this@ListOfCharacters, t.message, Toast.LENGTH_LONG).show()
+                        }
+
+                        override fun onResponse(call: Call<Characters>, response: Response<Characters>) {
+                            if (!response.isSuccessful) {
+                                Toast.makeText(this@ListOfCharacters, "Błąd połączenia", Toast.LENGTH_LONG)
+                                        .show()
+                            }
+
+                            val list = response.body()
+
+                            list?.let {
+                                listView.apply {
+                                    layoutManager = LinearLayoutManager(this@ListOfCharacters)
+
+                                    adapter = ListOfCharactersAdapter(list)
+
+                                }
+                            }
+
+
+                            return
+                        }
+
+                    })
                 }
 
-            })
+            }
+
         }
     }
 }

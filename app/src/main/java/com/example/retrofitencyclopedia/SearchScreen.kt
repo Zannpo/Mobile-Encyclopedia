@@ -48,22 +48,26 @@ class SearchScreen : AppCompatActivity() {
 
 
 
-            if(searchName.text.isNotBlank())
+            if(searchName.text.isNotBlank() && radioAlive.isChecked == false && radioDead.isChecked == false)
             {
                 var wantedCharacter = searchName.text
                 intent.putExtra("characterName",wantedCharacter.toString())
                 startActivity(intent)
             }
-            else if (radioAlive.isChecked == true)
+            else if (radioAlive.isChecked == true && searchName.text.isNotBlank())
             {
                 var status = "alive"
                 intent.putExtra("characterStatus",status.toString())
+                var wantedCharacter = searchName.text
+                intent.putExtra("characterName",wantedCharacter.toString())
                 startActivity(intent)
             }
-            else if (radioDead.isChecked == true)
+            else if (radioDead.isChecked == true && searchName.text.isNotBlank())
             {
                 var status = "dead"
                 intent.putExtra("characterStatus",status.toString())
+                var wantedCharacter = searchName.text
+                intent.putExtra("characterName",wantedCharacter.toString())
                 startActivity(intent)
             }
             else if (radioFemale.isChecked == true)
